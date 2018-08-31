@@ -1,0 +1,8 @@
+defmodule {class_name} do
+
+  @{coefficients}
+  @{intercepts}
+
+  {method}
+
+end

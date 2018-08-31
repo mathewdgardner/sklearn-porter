@@ -41,7 +41,7 @@ class Porter(object):
 
         Parameters
         ----------
-        language : {'c', 'go', 'java', 'js', 'php', 'ruby'}, default: 'java'
+        language : {'c', 'go', 'java', 'js', 'php', 'ruby', 'elixir'}, default: 'java'
             The required target programming language.
 
         method : {'predict', 'predict_proba'}, default: 'predict'
@@ -50,7 +50,7 @@ class Porter(object):
 
         # Check language support:
         language = str(language).strip().lower()
-        if language not in ['c', 'go', 'java', 'js', 'php', 'ruby']:
+        if language not in ['c', 'go', 'java', 'js', 'php', 'ruby', 'elixir']:
             error = "The given language '{}' isn't supported.".format(language)
             raise AttributeError(error)
         self.target_language = language

@@ -1,0 +1,18 @@
+def {method_name} (features) do
+  {{_, class_val, class_idx}} =
+    @coefficients
+    |> Enum.zip(@intercepts)
+    |> Enum.reduce({{0, -1.0e32, -1}}, fn({{coefficients, intercept}}, {{i, class_val, class_idx}}) ->
+      prob =
+        coefficients
+        |> Enum.zip(features)
+        |> Enum.reduce(0.0, fn({{coefficient, feature}}, p) -> p + coefficient * feature end)
+
+      cond do
+        prob + intercept > class_val -> {{i + 1, prob + intercept, i}}
+        true                         -> {{i + 1, class_val, class_idx}}
+      end
+    end)
+
+  class_idx
+end
